@@ -42,7 +42,7 @@ public class Zoo {
 
     public void addAnimal(Animal animal) {
         this.ani.add(animal);
-        notifier(animal.getName()+" has been added to the zoo!");
+        notifier(animal.getAnimalName()+" has been added to the zoo!");
     }
 
     public void showAnimalsInfo() {
@@ -65,6 +65,12 @@ public class Zoo {
     }
 
     public void watchAnimals() {
+        this.hunger++;
+        this.happiness++;
+        for (Animal animals : ani){
+            System.out.println("The " + animals.getAnimalName() + " is " + animals.getShowName() + "...");
+        }
+        notifier("The animals are being watched");
     }
 
     public void removeObserver(ZooObserver observer) {
