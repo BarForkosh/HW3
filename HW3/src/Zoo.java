@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+
 public class Zoo {
     int hunger;
     int happiness;
+    ArrayList<ZooObserver> obs;
+    ArrayList<Animal> ani;
 
     public Zoo(){
         this.happiness = 2;
@@ -26,6 +30,14 @@ public class Zoo {
     public static Zoo getInstance(){
         Zoo zoo = new Zoo();
         return zoo;
+    }
+
+    public void addObserver(ZooObserver observer) {
+        this.obs.add(observer);
+    }
+
+    public void addAnimal(Animal animal) {
+        this.ani.add(animal);
     }
 }
 
