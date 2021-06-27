@@ -5,6 +5,7 @@ public class Zoo {
     int happiness;
     ArrayList<ZooObserver> obs;
     ArrayList<Animal> ani;
+    static Zoo zoo;
 
     public Zoo(){
         this.happiness = 2;
@@ -30,7 +31,8 @@ public class Zoo {
     }
 
     public static Zoo getInstance(){
-        Zoo zoo = new Zoo();
+        if(zoo == null)zoo = new Zoo();
+        else System.out.println("The zoo already exists...");
         return zoo;
     }
 
@@ -40,10 +42,18 @@ public class Zoo {
 
     public void addAnimal(Animal animal) {
         this.ani.add(animal);
+        notifier(animal.getName()+" has been added to the zoo!");
     }
 
     public void showAnimalsInfo() {
         //TODO: implemente
+    }
+
+    public void notifier(String msg){
+        System.out.println("Notifying observers:");
+        for(ZooObserver ob : obs){
+            System.out.println("["+ob.getName()+"] "+msg);
+        }
     }
 
     public void feedAnimals() {
@@ -53,6 +63,7 @@ public class Zoo {
     }
 
     public void removeObserver(ZooObserver observer) {
+        this.obs.remove(observer);
     }
 }
 
