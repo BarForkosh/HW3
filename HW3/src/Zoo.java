@@ -7,7 +7,7 @@ public class Zoo {
     ArrayList<Animal> ani;
     static Zoo zoo;
 
-    public Zoo() {
+    public Zoo(){
         this.happiness = 2;
         this.hunger = 3;
         this.obs = new ArrayList<>();
@@ -47,22 +47,28 @@ public class Zoo {
         if(zoo.hunger>3) System.out.println("The animals are hungry, you should feed them...");
     }
 
-    public void notifier(String msg) {
+    public void notifier(String msg){
         System.out.println("Notifying observers:");
-        for (ZooObserver ob : obs) {
-            System.out.println("[" + ob.getName() + "] " + msg);
+        for(ZooObserver ob : obs){
+            System.out.println("["+ob.getName()+"] "+msg);
         }
     }
 
     public void feedAnimals() {
-        this.hunger--;
-        for (Animal animals : ani) {
-            System.out.println("The " + animals.getAnimalName() + " is eating " + animals.getFood() + "...");
-        }
-        notifier("The animals are being fed");
+       this.hunger--;
+       for (Animal animals : ani){
+           System.out.println("The " + animals.getAnimalName() + " is eating " + animals.getFood() + "...");
+       }
+       notifier("The animals are being fed");
     }
 
     public void watchAnimals() {
+        this.hunger++;
+        this.happiness++;
+        for (Animal animals : ani){
+            System.out.println("The " + animals.getAnimalName() + " is " + animals.getShowName() + "...");
+        }
+        notifier("The animals are being watched");
     }
 
     public void removeObserver(ZooObserver observer) {
