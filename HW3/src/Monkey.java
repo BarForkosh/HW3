@@ -7,5 +7,8 @@ public class Monkey implements Animal{
     }
     public String getAnimalName(){
         return "monkey";
-    };
+    }
+    public String getShowName(){
+        return "hanging on trees";
+    }
 }

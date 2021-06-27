@@ -7,5 +7,8 @@ public class Unicorn implements Animal{
     }
     public String getAnimalName(){
         return "unicorn";
-    };
+    }
+    public String getShowName(){
+        return "flying";
+    }
 }
