@@ -7,7 +7,7 @@ public class Zoo {
     ArrayList<Animal> ani;
     static Zoo zoo;
 
-    public Zoo(){
+    private Zoo(){
         this.happiness = 2;
         this.hunger = 3;
         this.obs = new ArrayList<>();
@@ -15,7 +15,10 @@ public class Zoo {
     }
 
     public static Zoo getInstance() {
-        if (zoo == null) zoo = new Zoo();
+        if (zoo == null) {
+            zoo = new Zoo();
+            System.out.println("Creating zoo...");
+        }
         else System.out.println("The zoo already exists...");
         return zoo;
     }
@@ -26,16 +29,16 @@ public class Zoo {
 
     public void addAnimal(Animal animal) {
         this.ani.add(animal);
-        notifier(animal.getAnimalName() + " has been added to the zoo!");
+        notifier(animal.getNotifyName() + " has been added to the zoo!");
     }
 
     public void showAnimalsInfo() {
         System.out.println("The zoo contains total of " + zoo.ani.size() + " animals:");
         int z_cnt = 0, u_cnt = 0, m_cnt = 0;
         for (Animal an : zoo.ani){
-            if(an.getAnimalName().equals("Zebra"))z_cnt++;
-            if(an.getAnimalName().equals("Unicorn"))u_cnt++;
-            else m_cnt++;
+            if(an.getNotifyName().equals("Zebra"))z_cnt++;
+            if(an.getNotifyName().equals("Unicorn"))u_cnt++;
+            if(an.getNotifyName().equals("Monkey"))m_cnt++;
         }
         System.out.println("- Zebra: "+z_cnt);
         System.out.println("- Unicorn: "+u_cnt);
@@ -55,7 +58,7 @@ public class Zoo {
     }
 
     public void feedAnimals() {
-       this.hunger--;
+       if(zoo.hunger>1)zoo.hunger--;
        for (Animal animals : ani){
            System.out.println("The " + animals.getAnimalName() + " is eating " + animals.getFood() + "...");
        }
@@ -63,8 +66,8 @@ public class Zoo {
     }
 
     public void watchAnimals() {
-        this.hunger++;
-        this.happiness++;
+        if(zoo.hunger<5)zoo.hunger++;
+        if(zoo.happiness<5)zoo.happiness++;
         for (Animal animals : ani){
             System.out.println("The " + animals.getAnimalName() + " is " + animals.getShowName() + "...");
         }

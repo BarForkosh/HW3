@@ -1,12 +1,18 @@
-public class Monkey implements Animal{
+public class Monkey implements Animal {
 
-    public String getFood(){
+    public String getFood() {
         return "a banana";
     }
-    public String getAnimalName(){
+
+    public String getAnimalName() {
         return "monkey";
     }
-    public String getShowName(){
+
+    public String getNotifyName() {
+        return "Monkey";
+    }
+
+    public String getShowName() {
         return "hanging on trees";
     }
 }

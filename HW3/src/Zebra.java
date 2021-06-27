@@ -1,11 +1,17 @@
-public class Zebra implements Animal{
-    public String getFood(){
+public class Zebra implements Animal {
+    public String getFood() {
         return "grass";
     }
-    public String getAnimalName(){
+
+    public String getAnimalName() {
         return "zebra";
     }
-    public String getShowName(){
+
+    public String getNotifyName() {
+        return "Zebra";
+    }
+
+    public String getShowName() {
         return "running";
     }
 }

@@ -8,6 +8,10 @@ public class Unicorn implements Animal {
         return "unicorn";
     }
 
+    public String getNotifyName(){
+        return "Unicorn";
+    }
+
     public String getShowName() {
         return "flying";
     }
