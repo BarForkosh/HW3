@@ -1,14 +1,14 @@
-public class Unicorn implements Animal{
-    public Unicorn(){
-        super();
-    }
-    public String getFood(){
+public class Unicorn implements Animal {
+
+    public String getFood() {
         return "rainbow cakes";
     }
-    public String getAnimalName(){
+
+    public String getAnimalName() {
         return "unicorn";
     }
-    public String getShowName(){
+
+    public String getShowName() {
         return "flying";
     }
 }
