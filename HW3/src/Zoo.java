@@ -57,6 +57,11 @@ public class Zoo {
     }
 
     public void feedAnimals() {
+       this.hunger--;
+       for (Animal animals : ani){
+           System.out.println("The " + animals.getAnimalName() + " is eating " + animals.getFood() + "...");
+       }
+       notifier("The animals are being fed");
     }
 
     public void watchAnimals() {

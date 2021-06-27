@@ -1,3 +1,4 @@
 public interface Animal {
-    Animal getName();
+    public String getFood();
+    public String getAnimalName();
 }
