@@ -9,6 +9,8 @@ public class Zoo {
     public Zoo(){
         this.happiness = 2;
         this.hunger = 3;
+        this.obs = new ArrayList<>();
+        this.ani = new ArrayList<>();
     }
 
     public int getHappiness(){
@@ -38,6 +40,19 @@ public class Zoo {
 
     public void addAnimal(Animal animal) {
         this.ani.add(animal);
+    }
+
+    public void showAnimalsInfo() {
+        //TODO: implemente
+    }
+
+    public void feedAnimals() {
+    }
+
+    public void watchAnimals() {
+    }
+
+    public void removeObserver(ZooObserver observer) {
     }
 }
 
