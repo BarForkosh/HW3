@@ -6,6 +6,7 @@ public class Zoo {
     ArrayList<ZooObserver> obs;
     ArrayList<Animal> ani;
     static Zoo zoo;
+    ArrayList<String> anikinds;
 
     /**
      * private constructor of a new zoo
@@ -15,6 +16,7 @@ public class Zoo {
         this.hunger = 3;
         this.obs = new ArrayList<>();
         this.ani = new ArrayList<>();
+        this.anikinds = new ArrayList<>();
     }
 
     /**
@@ -37,6 +39,14 @@ public class Zoo {
      */
     public void addAnimal(Animal animal) {
         this.ani.add(animal);
+        String kind = animal.getNotifyName();
+        boolean flag = true;
+        for (String name : zoo.anikinds)
+            if (name.equals(kind)) {
+                flag = false;
+                break;
+            }
+        if (flag) zoo.anikinds.add(kind);
         notifier(animal.getNotifyName() + " has been added to the zoo!");
     }
 
@@ -86,15 +96,13 @@ public class Zoo {
      */
     public void showAnimalsInfo() {
         System.out.println("The zoo contains total of " + zoo.ani.size() + " animals:");
-        int z_cnt = 0, u_cnt = 0, m_cnt = 0;
-        for (Animal an : zoo.ani) {
-            if (an.getNotifyName().equals("Zebra")) z_cnt++;
-            if (an.getNotifyName().equals("Unicorn")) u_cnt++;
-            if (an.getNotifyName().equals("Monkey")) m_cnt++;
-        }
-        System.out.println("- Zebra: " + z_cnt);
-        System.out.println("- Unicorn: " + u_cnt);
-        System.out.println("- Monkey: " + m_cnt);
+        int len = zoo.anikinds.size();
+        int[] count = new int[len];
+        for (Animal an : zoo.ani)
+            for (int i = 0; i < len; i++)
+                if (an.getNotifyName().equals(zoo.anikinds.get(i))) count[i]++;
+        for (int i = 0; i < len; i++)
+            System.out.println("- " + zoo.anikinds.get(i) + ": " + count[i]);
         System.out.println("Happiness level: " + zoo.happiness);
         if (zoo.happiness < 3) System.out.println("The animals are not happy, you should watch them...");
         if (zoo.happiness > 3) System.out.println("The animals are very happy, keep working hard...");
